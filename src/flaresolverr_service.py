@@ -361,9 +361,8 @@ def _evil_logic(req: V1RequestBase, driver: ChromiumPage, method: str) -> Challe
     challenge_res.url = driver.url
     if data is not None and data.response is not None:
         challenge_res.status = data.response.status
-        if not req.returnOnlyCookies:
-            challenge_res.response = data.response.body
-            challenge_res.headers = data.response.headers.copy()
+        challenge_res.response = data.response.body
+        challenge_res.headers = data.response.headers.copy()
 
     challenge_res.cookies = driver.cookies()
     challenge_res.userAgent = utils.get_user_agent(driver)
